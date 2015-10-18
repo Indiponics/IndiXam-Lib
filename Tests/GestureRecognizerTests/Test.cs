@@ -57,6 +57,16 @@ namespace IndiXam.Forms.Controls.GestureRecognizerTests
 		}
 
 
+		[Test()]
+		public void TestNullActivate()
+		{
+			activated = false;
+			var dc = new baseClassFake();
+			dc.OnActivated();
+			Assert.IsFalse(activated);
+		}
+
+
 		private void testActivated<T>() where T : IndiGestureRecognizerBase, new()
 		{
 			activated = false;

@@ -57,10 +57,10 @@ namespace IndiXam.Forms.Controls.GestureRecognizerTests
 		}
 
 
-		private void testActivated<T>() where T : IndiGestureRecognizerBase
+		private void testActivated<T>() where T : IndiGestureRecognizerBase, new()
 		{
 			activated = false;
-			var dc = new baseClassFake();
+			var dc = new T();
 			dc.Activated += (sender, e) =>
 			{
 				activated = true;
@@ -104,9 +104,9 @@ namespace IndiXam.Forms.Controls.GestureRecognizerTests
 		{
 			testLocation<IndiXam.Forms.Controls.GestureRecognizers.IndiSingleTapUpGestureRecognizer>();
 		}
-		private void testLocation<T>() where T : IndiGestureRecognizerBase
+		private void testLocation<T>() where T : IndiGestureRecognizerBase, new()
 		{
-			var dc = new baseClassFake();
+			var dc = new T();
 			dc.Location = new Point(1, 2);
 			Assert.AreEqual(1,dc.Location.X);
 			Assert.AreEqual(2, dc.Location.Y);
@@ -151,11 +151,11 @@ namespace IndiXam.Forms.Controls.GestureRecognizerTests
 		}
 
 		string propertyName;
-		private void testPropertyChanged<T>() where T : IndiGestureRecognizerBase
+		private void testPropertyChanged<T>() where T : IndiGestureRecognizerBase, new()
 		{
 			propertyName = string.Empty;
 			activated = false;
-			var dc = new baseClassFake();
+			var dc = new T();
 			dc.PropertyChanged += (sender, e) =>
 			{
 				propertyName=e.PropertyName;

@@ -1,0 +1,32 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisTargets>Microsoft.CodeAnalysis.targets</CodeAnalysisTargets>
+    <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
+    <BuildInParallel>true</BuildInParallel>
+    <WebProjectTargets>Clean;Build;Package</WebProjectTargets>
+    <OtherProjectTargets>Clean;Build</OtherProjectTargets>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectsToProcess Include="..\Projects\GestureRecognizers.PCL\GestureRecognizers.PCL.csproj"/>
+    <ProjectsToProcess Include="..\**\*.csproj" Exclude="@(ProjectsToProcess)"/>
+  </ItemGroup>
+  <Target Name="NuGet">
+    <Exec Command="nuget restore &quot;%(ProjectsToProcess.RelativeDir)packages.config&quot; -PackagesDirectory &quot;%(ProjectsToProcess.RelativeDir)..\..\Solutions\packages&quot;"/>
+    <Exec Command="nuget update  &quot;%(ProjectsToProcess.RelativeDir)packages.config&quot; -repositoryPath &quot;%(ProjectsToProcess.RelativeDir)..\..\Solutions\packages&quot;"/>
+  </Target>
+  <Target Name="Build" DependsOnTargets="NuGet">
+    <MSBuild Projects="%(ProjectsToProcess.Identity)" 
+            Properties="
+                RunCodeAnalysis=$(RunCodeAnalysis);
+                CodeAnalysisTargets=$(CodeAnalysisTargets);
+                CodeAnalysisTreatWarningsAsErrors=$(CodeAnalysisTreatWarningsAsErrors);
+                StyleCopTreatErrorsAsWarnings=$(StyleCopTreatErrorsAsWarnings);
+                DefineConstants=$(DefineConstants);
+                BuildInParallel=$(BuildInParallel);
+             "/>
+  </Target>
+</Project>

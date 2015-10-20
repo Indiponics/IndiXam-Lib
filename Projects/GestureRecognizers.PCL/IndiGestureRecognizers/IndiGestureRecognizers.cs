@@ -18,22 +18,22 @@ namespace IndiXam.Forms.Controls.GestureRecognizers
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="Indiponics.Forms.Controls.IndiGestureRecognizers.IndiLongPressGestureRecognizer"/> class.
+        /// <see cref="IndiXam.Forms.Controls.GestureRecognizers.IndiLongPressGestureRecognizer"/> class.
         /// </summary>
         public IndiLongPressGestureRecognizer()
         {
         }
     }
 
- /// <summary>
- /// Used to respond to each tap in a doubletap event. This would only be useful in very rare situations. 
- /// </summary>
+    /// <summary>
+    /// Indi double tap event gesture recognizer.
+    /// </summary>
     [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Reviewed.")]
     public class IndiDoubleTapEventGestureRecognizer : IndiGestureRecognizerBase
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="Indiponics.Forms.Controls.IndiGestureRecognizers.IndiDoubleTapEventGestureRecognizer"/> class.
+        /// <see cref="IndiXam.Forms.Controls.GestureRecognizers.IndiDoubleTapEventGestureRecognizer"/> class.
         /// </summary>
         public IndiDoubleTapEventGestureRecognizer()
         {
@@ -43,26 +43,27 @@ namespace IndiXam.Forms.Controls.GestureRecognizers
     /// <summary>
     /// Indi single tap up gesture recognizer.
     /// </summary>
+    [SuppressMessage("Microsoft.StyleCop.CSharp.Maintainability", "SA1402:FileMayOnlyContainASingleClass", Justification = "Most Classes contain no Body and are easier to maintain in 1 file")] 
     public class IndiSingleTapUpGestureRecognizer : IndiGestureRecognizerBase
     {
-       /// <summary>
-       /// Initializes a new instance of the
-       /// <see cref="Indiponics.Forms.Controls.IndiGestureRecognizers.IndiSingleTapUpGestureRecognizer"/> class.
-       /// </summary>
+        /// <summary>
+        /// Initializes a new instance of the
+        /// <see cref="IndiXam.Forms.Controls.GestureRecognizers.IndiSingleTapUpGestureRecognizer"/> class.
+        /// </summary>
         public IndiSingleTapUpGestureRecognizer()
         {
         }
     }
 
-/// <summary>
-/// Indi down gesture recognizer.
-/// </summary>
+    /// <summary>
+    /// Indi down gesture recognizer.
+    /// </summary>
     [SuppressMessage("Microsoft.StyleCop.CSharp.Maintainability", "SA1402:FileMayOnlyContainASingleClass", Justification = "Most Classes contain no Body and are easier to maintain in 1 file")] 
     public class IndiDownGestureRecognizer : IndiGestureRecognizerBase
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="Indiponics.Forms.Controls.IndiGestureRecognizers.IndiDownGestureRecognizer"/> class.
+        /// <see cref="IndiXam.Forms.Controls.GestureRecognizers.IndiDownGestureRecognizer"/> class.
         /// </summary>
         public IndiDownGestureRecognizer()
         {
@@ -77,7 +78,7 @@ namespace IndiXam.Forms.Controls.GestureRecognizers
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="Indiponics.Forms.Controls.IndiGestureRecognizers.IndiShowPressGestureRecognizer"/> class.
+        /// <see cref="IndiXam.Forms.Controls.GestureRecognizers.IndiShowPressGestureRecognizer"/> class.
         /// </summary>
         public IndiShowPressGestureRecognizer()
         {
@@ -92,7 +93,7 @@ namespace IndiXam.Forms.Controls.GestureRecognizers
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="Indiponics.Forms.Controls.IndiGestureRecognizers.IndiFlingGestureRecognizer"/> class.
+        /// <see cref="IndiXam.Forms.Controls.GestureRecognizers.IndiFlingGestureRecognizer"/> class.
         /// </summary>
         public IndiFlingGestureRecognizer()
         {
@@ -104,8 +105,15 @@ namespace IndiXam.Forms.Controls.GestureRecognizers
         /// <value>The start.</value>
         public Point Start
         {
-            get {return base.Location;} 
-            set {Location = value;}
+            get 
+            {
+                return this.Location;
+            } 
+
+            set 
+            {
+                this.Location = value;
+            }
         }
 
         /// <summary>
@@ -147,7 +155,7 @@ namespace IndiXam.Forms.Controls.GestureRecognizers
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="Indiponics.Forms.Controls.IndiGestureRecognizers.IndiScrollGestureRecognizer"/> class.
+        /// <see cref="IndiXam.Forms.Controls.GestureRecognizers.IndiScrollGestureRecognizer"/> class.
         /// </summary>
         public IndiScrollGestureRecognizer()
         {
@@ -159,10 +167,16 @@ namespace IndiXam.Forms.Controls.GestureRecognizers
         /// <value>The start.</value>
         public Point Start
         {
-            get {return base.Location;} 
-            set {Location = value;}
-        }
+            get 
+            {
+                return this.Location;
+            }
 
+            set 
+            {
+                this.Location = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the end.

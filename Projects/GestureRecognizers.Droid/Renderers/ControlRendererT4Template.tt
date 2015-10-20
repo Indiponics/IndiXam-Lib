@@ -3,13 +3,33 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#			var controls = new List<string>{ "Label", "Image" };#>
+<#var controls = new List<string>#>
+<#{#>
+<#"Image",#>
+<#"TableView",#>
+<#"ActivityIndicator",#>
+<#"DatePicker",#>
+<#"Editor",#>
+<#"Entry",#>
+<#"ProgressBar",#>
+<#"SearchBar",#>
+<#"Slider",#>
+<#"Stepper",#>
+<#"Switch",#>
+<#"BoxView",#>
+<#"Picker",#>
+<#"TimePicker",#>
+<#"WebView",#>
+<#"Label"#>
+<#};#>
 // <copyright file="IIndiGestureRecognizer.cs" company="David Strickland">
 //     Copyright (c) David Strickland. The MIT License (MIT)
 // </copyright>
 
 using Xamarin.Forms;
 using IndiXam.Forms.Controls.GestureRecognizers;
+using GestureRecognizers.Droid.Renderers;
+
 <#			using (IEnumerator<string> enumerator = controls.GetEnumerator ()) {#>
 <#				while(enumerator.MoveNext())#>
 <#				{#>

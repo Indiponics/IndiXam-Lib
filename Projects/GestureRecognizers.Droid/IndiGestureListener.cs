@@ -44,43 +44,14 @@ namespace IndiXam.Forms.Controls.GestureRecognizers
         }
 
         /// <summary>
-        /// Raises the double tap event.
+        /// Raises the double tap event. Bacause windows phone fires both a tap and double tap event 
+        /// ondoubletap this functionality was emulated here for consistency.
         /// </summary>
         /// <param name="e">Source of Gesture.</param>
         /// <returns>result of activation</returns>  
         public override bool OnDoubleTap(MotionEvent e)
         {
-            return this.OnTap(2);
-        }
-
-        /// <summary>
-        /// This first once for each tap in a double tap. 
-        /// </summary>
-        /// <param name="e">Source of Gesture.</param>
-        /// <returns>result of activation</returns>  
-        public override bool OnDoubleTapEvent(MotionEvent e)
-        {
-            return this.SendActivated<IndiDoubleTapEventGestureRecognizer>(e);
-        }
-
-        /// <summary>
-        /// Raises the single tap up event.
-        /// </summary>
-        /// <param name="e">Source of Gesture.</param>
-        /// <returns>result of activation</returns>  
-        public override bool OnSingleTapUp(MotionEvent e)
-        {
-            return this.SendActivated<IndiSingleTapUpGestureRecognizer>(e);
-        }
-
-        /// <summary>
-        /// Raises the down event.
-        /// </summary>
-        /// <param name="e">Source of Gesture.</param>
-        /// <returns>result of activation</returns>  
-        public override bool OnDown(MotionEvent e)
-        {
-            return this.SendActivated<IndiDownGestureRecognizer>(e);
+            return this.OnTap(1) && this.OnTap(2);
         }
 
         /// <summary>
@@ -151,15 +122,6 @@ namespace IndiXam.Forms.Controls.GestureRecognizers
             }
 
             return result;
-        }
-
-        /// <summary>
-        /// Raises the show press event.
-        /// </summary>
-        /// <param name="e">Source of Gesture..</param>
-        public override void OnShowPress(MotionEvent e)
-        {
-            this.SendActivated<IndiShowPressGestureRecognizer>(e);
         }
 
         /// <summary>

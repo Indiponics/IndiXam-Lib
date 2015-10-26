@@ -27,6 +27,7 @@
 // </copyright>
 
 using Xamarin.Forms;
+using IndiXam.Forms.Controls;
 using IndiXam.Forms.Controls.GestureRecognizers;
 using GestureRecognizers.Droid.Renderers;
 
@@ -38,47 +39,32 @@ using GestureRecognizers.Droid.Renderers;
 <#			}#>
 namespace IndiXam.Forms.Controls.GestureRecognizers
 {
-using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.Android;
-using Android.Views;
-using System.Linq;
-using System.Collections.Generic;
+    using System;
+    using Xamarin.Forms;
+    using System.Linq;
+    using System.Collections.Generic;
+    using Xamarin.Forms.Platform.WinPhone;
 
 <#			using (IEnumerator<string> enumerator = controls.GetEnumerator ()) {#>
 <#				while(enumerator.MoveNext())#>
 <#				{#>
 	public class Indi<#=enumerator.Current#>Renderer:  <#=enumerator.Current#>Renderer
 	{
-
-		private GestureDetector gestureDetector;
-		private IndiGestureListener gestureListener;
-		protected override void OnElementChanged (ElementChangedEventArgs<<#=enumerator.Current#>> e)
+        IndiGestureListener gestureListener; 
+		protected override void OnElementChanged (ElementChangedEventArgs<Xamarin.Forms.<#=enumerator.Current#>> e)
 		{
 			base.OnElementChanged (e);
 			if(GestureActuator.controlsToActuate
 			.Contains<GestureActuator.ControlToActuate>(GestureActuator.ControlToActuate.<#=enumerator.Current#>))
 			{
 				if (e.NewElement == null) {
-					this.GenericMotion -= HandleGenericMotion;
-					this.Touch -= HandleTouch;
+					gestureListener = null;
 				}
 				if (e.OldElement == null&& e.NewElement!=null) {
 
-					gestureListener = new IndiGestureListener((<#=enumerator.Current#>)e.NewElement);
-					gestureDetector = new GestureDetector(gestureListener);
-					this.GenericMotion += HandleGenericMotion;
-					this.Touch += HandleTouch;
+					gestureListener = new IndiGestureListener(this.Control, e.NewElement);
 				}
 			}
-		}
-		void HandleTouch (object sender, TouchEventArgs e)
-		{
-			gestureDetector.OnTouchEvent (e.Event);
-		}
-		void HandleGenericMotion (object sender, GenericMotionEventArgs e)
-		{
-			gestureDetector.OnTouchEvent (e.Event);
 		}
 	}
 <#				}#>

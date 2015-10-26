@@ -26,66 +26,6 @@ namespace IndiXam.Forms.Controls.GestureRecognizers
     }
 
     /// <summary>
-    /// Indi double tap event gesture recognizer.
-    /// </summary>
-    [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Reviewed.")]
-    public class IndiDoubleTapEventGestureRecognizer : IndiGestureRecognizerBase
-    {
-        /// <summary>
-        /// Initializes a new instance of the
-        /// <see cref="IndiXam.Forms.Controls.GestureRecognizers.IndiDoubleTapEventGestureRecognizer"/> class.
-        /// </summary>
-        public IndiDoubleTapEventGestureRecognizer()
-        {
-        }
-    }
-
-    /// <summary>
-    /// Indi single tap up gesture recognizer.
-    /// </summary>
-    [SuppressMessage("Microsoft.StyleCop.CSharp.Maintainability", "SA1402:FileMayOnlyContainASingleClass", Justification = "Most Classes contain no Body and are easier to maintain in 1 file")] 
-    public class IndiSingleTapUpGestureRecognizer : IndiGestureRecognizerBase
-    {
-        /// <summary>
-        /// Initializes a new instance of the
-        /// <see cref="IndiXam.Forms.Controls.GestureRecognizers.IndiSingleTapUpGestureRecognizer"/> class.
-        /// </summary>
-        public IndiSingleTapUpGestureRecognizer()
-        {
-        }
-    }
-
-    /// <summary>
-    /// Indi down gesture recognizer.
-    /// </summary>
-    [SuppressMessage("Microsoft.StyleCop.CSharp.Maintainability", "SA1402:FileMayOnlyContainASingleClass", Justification = "Most Classes contain no Body and are easier to maintain in 1 file")] 
-    public class IndiDownGestureRecognizer : IndiGestureRecognizerBase
-    {
-        /// <summary>
-        /// Initializes a new instance of the
-        /// <see cref="IndiXam.Forms.Controls.GestureRecognizers.IndiDownGestureRecognizer"/> class.
-        /// </summary>
-        public IndiDownGestureRecognizer()
-        {
-        }
-    }
-
-    /// <summary>
-    /// Indi show press gesture recognizer.
-    /// </summary>
-    [SuppressMessage("Microsoft.StyleCop.CSharp.Maintainability", "SA1402:FileMayOnlyContainASingleClass", Justification = "Most Classes contain no Body and are easier to maintain in 1 file")] 
-    public class IndiShowPressGestureRecognizer : IndiGestureRecognizerBase
-    {
-        /// <summary>
-        /// Initializes a new instance of the
-        /// <see cref="IndiXam.Forms.Controls.GestureRecognizers.IndiShowPressGestureRecognizer"/> class.
-        /// </summary>
-        public IndiShowPressGestureRecognizer()
-        {
-        }
-    }
-
-    /// <summary>
     /// Indi fling gesture recognizer.
     /// </summary>
     [SuppressMessage("Microsoft.StyleCop.CSharp.Maintainability", "SA1402:FileMayOnlyContainASingleClass", Justification = "Most Classes contain no Body and are easier to maintain in 1 file")] 

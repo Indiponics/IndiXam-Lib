@@ -39,15 +39,20 @@ using System.Collections.Generic;
 		protected override void OnElementChanged (ElementChangedEventArgs<Image> e)
 		{
 			base.OnElementChanged (e);
-			if (e.NewElement == null) {
-				this.GenericMotion -= HandleGenericMotion;
-				this.Touch -= HandleTouch;
-			}
-			if (e.OldElement == null&& e.NewElement!=null) {
-				gestureListener = new IndiGestureListener((Image)e.NewElement);
-				gestureDetector = new GestureDetector(gestureListener);
-				this.GenericMotion += HandleGenericMotion;
-				this.Touch += HandleTouch;
+			if(GestureActuator.controlsToActuate
+			.Contains<GestureActuator.ControlToActuate>(GestureActuator.ControlToActuate.Image))
+			{
+				if (e.NewElement == null) {
+					this.GenericMotion -= HandleGenericMotion;
+					this.Touch -= HandleTouch;
+				}
+				if (e.OldElement == null&& e.NewElement!=null) {
+
+					gestureListener = new IndiGestureListener((Image)e.NewElement);
+					gestureDetector = new GestureDetector(gestureListener);
+					this.GenericMotion += HandleGenericMotion;
+					this.Touch += HandleTouch;
+				}
 			}
 		}
 		void HandleTouch (object sender, TouchEventArgs e)
@@ -67,15 +72,20 @@ using System.Collections.Generic;
 		protected override void OnElementChanged (ElementChangedEventArgs<TableView> e)
 		{
 			base.OnElementChanged (e);
-			if (e.NewElement == null) {
-				this.GenericMotion -= HandleGenericMotion;
-				this.Touch -= HandleTouch;
-			}
-			if (e.OldElement == null&& e.NewElement!=null) {
-				gestureListener = new IndiGestureListener((TableView)e.NewElement);
-				gestureDetector = new GestureDetector(gestureListener);
-				this.GenericMotion += HandleGenericMotion;
-				this.Touch += HandleTouch;
+			if(GestureActuator.controlsToActuate
+			.Contains<GestureActuator.ControlToActuate>(GestureActuator.ControlToActuate.TableView))
+			{
+				if (e.NewElement == null) {
+					this.GenericMotion -= HandleGenericMotion;
+					this.Touch -= HandleTouch;
+				}
+				if (e.OldElement == null&& e.NewElement!=null) {
+
+					gestureListener = new IndiGestureListener((TableView)e.NewElement);
+					gestureDetector = new GestureDetector(gestureListener);
+					this.GenericMotion += HandleGenericMotion;
+					this.Touch += HandleTouch;
+				}
 			}
 		}
 		void HandleTouch (object sender, TouchEventArgs e)
@@ -95,15 +105,20 @@ using System.Collections.Generic;
 		protected override void OnElementChanged (ElementChangedEventArgs<ActivityIndicator> e)
 		{
 			base.OnElementChanged (e);
-			if (e.NewElement == null) {
-				this.GenericMotion -= HandleGenericMotion;
-				this.Touch -= HandleTouch;
-			}
-			if (e.OldElement == null&& e.NewElement!=null) {
-				gestureListener = new IndiGestureListener((ActivityIndicator)e.NewElement);
-				gestureDetector = new GestureDetector(gestureListener);
-				this.GenericMotion += HandleGenericMotion;
-				this.Touch += HandleTouch;
+			if(GestureActuator.controlsToActuate
+			.Contains<GestureActuator.ControlToActuate>(GestureActuator.ControlToActuate.ActivityIndicator))
+			{
+				if (e.NewElement == null) {
+					this.GenericMotion -= HandleGenericMotion;
+					this.Touch -= HandleTouch;
+				}
+				if (e.OldElement == null&& e.NewElement!=null) {
+
+					gestureListener = new IndiGestureListener((ActivityIndicator)e.NewElement);
+					gestureDetector = new GestureDetector(gestureListener);
+					this.GenericMotion += HandleGenericMotion;
+					this.Touch += HandleTouch;
+				}
 			}
 		}
 		void HandleTouch (object sender, TouchEventArgs e)
@@ -123,15 +138,20 @@ using System.Collections.Generic;
 		protected override void OnElementChanged (ElementChangedEventArgs<DatePicker> e)
 		{
 			base.OnElementChanged (e);
-			if (e.NewElement == null) {
-				this.GenericMotion -= HandleGenericMotion;
-				this.Touch -= HandleTouch;
-			}
-			if (e.OldElement == null&& e.NewElement!=null) {
-				gestureListener = new IndiGestureListener((DatePicker)e.NewElement);
-				gestureDetector = new GestureDetector(gestureListener);
-				this.GenericMotion += HandleGenericMotion;
-				this.Touch += HandleTouch;
+			if(GestureActuator.controlsToActuate
+			.Contains<GestureActuator.ControlToActuate>(GestureActuator.ControlToActuate.DatePicker))
+			{
+				if (e.NewElement == null) {
+					this.GenericMotion -= HandleGenericMotion;
+					this.Touch -= HandleTouch;
+				}
+				if (e.OldElement == null&& e.NewElement!=null) {
+
+					gestureListener = new IndiGestureListener((DatePicker)e.NewElement);
+					gestureDetector = new GestureDetector(gestureListener);
+					this.GenericMotion += HandleGenericMotion;
+					this.Touch += HandleTouch;
+				}
 			}
 		}
 		void HandleTouch (object sender, TouchEventArgs e)
@@ -151,15 +171,20 @@ using System.Collections.Generic;
 		protected override void OnElementChanged (ElementChangedEventArgs<Editor> e)
 		{
 			base.OnElementChanged (e);
-			if (e.NewElement == null) {
-				this.GenericMotion -= HandleGenericMotion;
-				this.Touch -= HandleTouch;
-			}
-			if (e.OldElement == null&& e.NewElement!=null) {
-				gestureListener = new IndiGestureListener((Editor)e.NewElement);
-				gestureDetector = new GestureDetector(gestureListener);
-				this.GenericMotion += HandleGenericMotion;
-				this.Touch += HandleTouch;
+			if(GestureActuator.controlsToActuate
+			.Contains<GestureActuator.ControlToActuate>(GestureActuator.ControlToActuate.Editor))
+			{
+				if (e.NewElement == null) {
+					this.GenericMotion -= HandleGenericMotion;
+					this.Touch -= HandleTouch;
+				}
+				if (e.OldElement == null&& e.NewElement!=null) {
+
+					gestureListener = new IndiGestureListener((Editor)e.NewElement);
+					gestureDetector = new GestureDetector(gestureListener);
+					this.GenericMotion += HandleGenericMotion;
+					this.Touch += HandleTouch;
+				}
 			}
 		}
 		void HandleTouch (object sender, TouchEventArgs e)
@@ -179,15 +204,20 @@ using System.Collections.Generic;
 		protected override void OnElementChanged (ElementChangedEventArgs<Entry> e)
 		{
 			base.OnElementChanged (e);
-			if (e.NewElement == null) {
-				this.GenericMotion -= HandleGenericMotion;
-				this.Touch -= HandleTouch;
-			}
-			if (e.OldElement == null&& e.NewElement!=null) {
-				gestureListener = new IndiGestureListener((Entry)e.NewElement);
-				gestureDetector = new GestureDetector(gestureListener);
-				this.GenericMotion += HandleGenericMotion;
-				this.Touch += HandleTouch;
+			if(GestureActuator.controlsToActuate
+			.Contains<GestureActuator.ControlToActuate>(GestureActuator.ControlToActuate.Entry))
+			{
+				if (e.NewElement == null) {
+					this.GenericMotion -= HandleGenericMotion;
+					this.Touch -= HandleTouch;
+				}
+				if (e.OldElement == null&& e.NewElement!=null) {
+
+					gestureListener = new IndiGestureListener((Entry)e.NewElement);
+					gestureDetector = new GestureDetector(gestureListener);
+					this.GenericMotion += HandleGenericMotion;
+					this.Touch += HandleTouch;
+				}
 			}
 		}
 		void HandleTouch (object sender, TouchEventArgs e)
@@ -207,15 +237,20 @@ using System.Collections.Generic;
 		protected override void OnElementChanged (ElementChangedEventArgs<ProgressBar> e)
 		{
 			base.OnElementChanged (e);
-			if (e.NewElement == null) {
-				this.GenericMotion -= HandleGenericMotion;
-				this.Touch -= HandleTouch;
-			}
-			if (e.OldElement == null&& e.NewElement!=null) {
-				gestureListener = new IndiGestureListener((ProgressBar)e.NewElement);
-				gestureDetector = new GestureDetector(gestureListener);
-				this.GenericMotion += HandleGenericMotion;
-				this.Touch += HandleTouch;
+			if(GestureActuator.controlsToActuate
+			.Contains<GestureActuator.ControlToActuate>(GestureActuator.ControlToActuate.ProgressBar))
+			{
+				if (e.NewElement == null) {
+					this.GenericMotion -= HandleGenericMotion;
+					this.Touch -= HandleTouch;
+				}
+				if (e.OldElement == null&& e.NewElement!=null) {
+
+					gestureListener = new IndiGestureListener((ProgressBar)e.NewElement);
+					gestureDetector = new GestureDetector(gestureListener);
+					this.GenericMotion += HandleGenericMotion;
+					this.Touch += HandleTouch;
+				}
 			}
 		}
 		void HandleTouch (object sender, TouchEventArgs e)
@@ -235,15 +270,20 @@ using System.Collections.Generic;
 		protected override void OnElementChanged (ElementChangedEventArgs<SearchBar> e)
 		{
 			base.OnElementChanged (e);
-			if (e.NewElement == null) {
-				this.GenericMotion -= HandleGenericMotion;
-				this.Touch -= HandleTouch;
-			}
-			if (e.OldElement == null&& e.NewElement!=null) {
-				gestureListener = new IndiGestureListener((SearchBar)e.NewElement);
-				gestureDetector = new GestureDetector(gestureListener);
-				this.GenericMotion += HandleGenericMotion;
-				this.Touch += HandleTouch;
+			if(GestureActuator.controlsToActuate
+			.Contains<GestureActuator.ControlToActuate>(GestureActuator.ControlToActuate.SearchBar))
+			{
+				if (e.NewElement == null) {
+					this.GenericMotion -= HandleGenericMotion;
+					this.Touch -= HandleTouch;
+				}
+				if (e.OldElement == null&& e.NewElement!=null) {
+
+					gestureListener = new IndiGestureListener((SearchBar)e.NewElement);
+					gestureDetector = new GestureDetector(gestureListener);
+					this.GenericMotion += HandleGenericMotion;
+					this.Touch += HandleTouch;
+				}
 			}
 		}
 		void HandleTouch (object sender, TouchEventArgs e)
@@ -263,15 +303,20 @@ using System.Collections.Generic;
 		protected override void OnElementChanged (ElementChangedEventArgs<Slider> e)
 		{
 			base.OnElementChanged (e);
-			if (e.NewElement == null) {
-				this.GenericMotion -= HandleGenericMotion;
-				this.Touch -= HandleTouch;
-			}
-			if (e.OldElement == null&& e.NewElement!=null) {
-				gestureListener = new IndiGestureListener((Slider)e.NewElement);
-				gestureDetector = new GestureDetector(gestureListener);
-				this.GenericMotion += HandleGenericMotion;
-				this.Touch += HandleTouch;
+			if(GestureActuator.controlsToActuate
+			.Contains<GestureActuator.ControlToActuate>(GestureActuator.ControlToActuate.Slider))
+			{
+				if (e.NewElement == null) {
+					this.GenericMotion -= HandleGenericMotion;
+					this.Touch -= HandleTouch;
+				}
+				if (e.OldElement == null&& e.NewElement!=null) {
+
+					gestureListener = new IndiGestureListener((Slider)e.NewElement);
+					gestureDetector = new GestureDetector(gestureListener);
+					this.GenericMotion += HandleGenericMotion;
+					this.Touch += HandleTouch;
+				}
 			}
 		}
 		void HandleTouch (object sender, TouchEventArgs e)
@@ -291,15 +336,20 @@ using System.Collections.Generic;
 		protected override void OnElementChanged (ElementChangedEventArgs<Stepper> e)
 		{
 			base.OnElementChanged (e);
-			if (e.NewElement == null) {
-				this.GenericMotion -= HandleGenericMotion;
-				this.Touch -= HandleTouch;
-			}
-			if (e.OldElement == null&& e.NewElement!=null) {
-				gestureListener = new IndiGestureListener((Stepper)e.NewElement);
-				gestureDetector = new GestureDetector(gestureListener);
-				this.GenericMotion += HandleGenericMotion;
-				this.Touch += HandleTouch;
+			if(GestureActuator.controlsToActuate
+			.Contains<GestureActuator.ControlToActuate>(GestureActuator.ControlToActuate.Stepper))
+			{
+				if (e.NewElement == null) {
+					this.GenericMotion -= HandleGenericMotion;
+					this.Touch -= HandleTouch;
+				}
+				if (e.OldElement == null&& e.NewElement!=null) {
+
+					gestureListener = new IndiGestureListener((Stepper)e.NewElement);
+					gestureDetector = new GestureDetector(gestureListener);
+					this.GenericMotion += HandleGenericMotion;
+					this.Touch += HandleTouch;
+				}
 			}
 		}
 		void HandleTouch (object sender, TouchEventArgs e)
@@ -319,15 +369,20 @@ using System.Collections.Generic;
 		protected override void OnElementChanged (ElementChangedEventArgs<Switch> e)
 		{
 			base.OnElementChanged (e);
-			if (e.NewElement == null) {
-				this.GenericMotion -= HandleGenericMotion;
-				this.Touch -= HandleTouch;
-			}
-			if (e.OldElement == null&& e.NewElement!=null) {
-				gestureListener = new IndiGestureListener((Switch)e.NewElement);
-				gestureDetector = new GestureDetector(gestureListener);
-				this.GenericMotion += HandleGenericMotion;
-				this.Touch += HandleTouch;
+			if(GestureActuator.controlsToActuate
+			.Contains<GestureActuator.ControlToActuate>(GestureActuator.ControlToActuate.Switch))
+			{
+				if (e.NewElement == null) {
+					this.GenericMotion -= HandleGenericMotion;
+					this.Touch -= HandleTouch;
+				}
+				if (e.OldElement == null&& e.NewElement!=null) {
+
+					gestureListener = new IndiGestureListener((Switch)e.NewElement);
+					gestureDetector = new GestureDetector(gestureListener);
+					this.GenericMotion += HandleGenericMotion;
+					this.Touch += HandleTouch;
+				}
 			}
 		}
 		void HandleTouch (object sender, TouchEventArgs e)
@@ -347,15 +402,20 @@ using System.Collections.Generic;
 		protected override void OnElementChanged (ElementChangedEventArgs<BoxView> e)
 		{
 			base.OnElementChanged (e);
-			if (e.NewElement == null) {
-				this.GenericMotion -= HandleGenericMotion;
-				this.Touch -= HandleTouch;
-			}
-			if (e.OldElement == null&& e.NewElement!=null) {
-				gestureListener = new IndiGestureListener((BoxView)e.NewElement);
-				gestureDetector = new GestureDetector(gestureListener);
-				this.GenericMotion += HandleGenericMotion;
-				this.Touch += HandleTouch;
+			if(GestureActuator.controlsToActuate
+			.Contains<GestureActuator.ControlToActuate>(GestureActuator.ControlToActuate.BoxView))
+			{
+				if (e.NewElement == null) {
+					this.GenericMotion -= HandleGenericMotion;
+					this.Touch -= HandleTouch;
+				}
+				if (e.OldElement == null&& e.NewElement!=null) {
+
+					gestureListener = new IndiGestureListener((BoxView)e.NewElement);
+					gestureDetector = new GestureDetector(gestureListener);
+					this.GenericMotion += HandleGenericMotion;
+					this.Touch += HandleTouch;
+				}
 			}
 		}
 		void HandleTouch (object sender, TouchEventArgs e)
@@ -375,15 +435,20 @@ using System.Collections.Generic;
 		protected override void OnElementChanged (ElementChangedEventArgs<Picker> e)
 		{
 			base.OnElementChanged (e);
-			if (e.NewElement == null) {
-				this.GenericMotion -= HandleGenericMotion;
-				this.Touch -= HandleTouch;
-			}
-			if (e.OldElement == null&& e.NewElement!=null) {
-				gestureListener = new IndiGestureListener((Picker)e.NewElement);
-				gestureDetector = new GestureDetector(gestureListener);
-				this.GenericMotion += HandleGenericMotion;
-				this.Touch += HandleTouch;
+			if(GestureActuator.controlsToActuate
+			.Contains<GestureActuator.ControlToActuate>(GestureActuator.ControlToActuate.Picker))
+			{
+				if (e.NewElement == null) {
+					this.GenericMotion -= HandleGenericMotion;
+					this.Touch -= HandleTouch;
+				}
+				if (e.OldElement == null&& e.NewElement!=null) {
+
+					gestureListener = new IndiGestureListener((Picker)e.NewElement);
+					gestureDetector = new GestureDetector(gestureListener);
+					this.GenericMotion += HandleGenericMotion;
+					this.Touch += HandleTouch;
+				}
 			}
 		}
 		void HandleTouch (object sender, TouchEventArgs e)
@@ -403,15 +468,20 @@ using System.Collections.Generic;
 		protected override void OnElementChanged (ElementChangedEventArgs<TimePicker> e)
 		{
 			base.OnElementChanged (e);
-			if (e.NewElement == null) {
-				this.GenericMotion -= HandleGenericMotion;
-				this.Touch -= HandleTouch;
-			}
-			if (e.OldElement == null&& e.NewElement!=null) {
-				gestureListener = new IndiGestureListener((TimePicker)e.NewElement);
-				gestureDetector = new GestureDetector(gestureListener);
-				this.GenericMotion += HandleGenericMotion;
-				this.Touch += HandleTouch;
+			if(GestureActuator.controlsToActuate
+			.Contains<GestureActuator.ControlToActuate>(GestureActuator.ControlToActuate.TimePicker))
+			{
+				if (e.NewElement == null) {
+					this.GenericMotion -= HandleGenericMotion;
+					this.Touch -= HandleTouch;
+				}
+				if (e.OldElement == null&& e.NewElement!=null) {
+
+					gestureListener = new IndiGestureListener((TimePicker)e.NewElement);
+					gestureDetector = new GestureDetector(gestureListener);
+					this.GenericMotion += HandleGenericMotion;
+					this.Touch += HandleTouch;
+				}
 			}
 		}
 		void HandleTouch (object sender, TouchEventArgs e)
@@ -431,15 +501,20 @@ using System.Collections.Generic;
 		protected override void OnElementChanged (ElementChangedEventArgs<WebView> e)
 		{
 			base.OnElementChanged (e);
-			if (e.NewElement == null) {
-				this.GenericMotion -= HandleGenericMotion;
-				this.Touch -= HandleTouch;
-			}
-			if (e.OldElement == null&& e.NewElement!=null) {
-				gestureListener = new IndiGestureListener((WebView)e.NewElement);
-				gestureDetector = new GestureDetector(gestureListener);
-				this.GenericMotion += HandleGenericMotion;
-				this.Touch += HandleTouch;
+			if(GestureActuator.controlsToActuate
+			.Contains<GestureActuator.ControlToActuate>(GestureActuator.ControlToActuate.WebView))
+			{
+				if (e.NewElement == null) {
+					this.GenericMotion -= HandleGenericMotion;
+					this.Touch -= HandleTouch;
+				}
+				if (e.OldElement == null&& e.NewElement!=null) {
+
+					gestureListener = new IndiGestureListener((WebView)e.NewElement);
+					gestureDetector = new GestureDetector(gestureListener);
+					this.GenericMotion += HandleGenericMotion;
+					this.Touch += HandleTouch;
+				}
 			}
 		}
 		void HandleTouch (object sender, TouchEventArgs e)
@@ -459,15 +534,20 @@ using System.Collections.Generic;
 		protected override void OnElementChanged (ElementChangedEventArgs<Label> e)
 		{
 			base.OnElementChanged (e);
-			if (e.NewElement == null) {
-				this.GenericMotion -= HandleGenericMotion;
-				this.Touch -= HandleTouch;
-			}
-			if (e.OldElement == null&& e.NewElement!=null) {
-				gestureListener = new IndiGestureListener((Label)e.NewElement);
-				gestureDetector = new GestureDetector(gestureListener);
-				this.GenericMotion += HandleGenericMotion;
-				this.Touch += HandleTouch;
+			if(GestureActuator.controlsToActuate
+			.Contains<GestureActuator.ControlToActuate>(GestureActuator.ControlToActuate.Label))
+			{
+				if (e.NewElement == null) {
+					this.GenericMotion -= HandleGenericMotion;
+					this.Touch -= HandleTouch;
+				}
+				if (e.OldElement == null&& e.NewElement!=null) {
+
+					gestureListener = new IndiGestureListener((Label)e.NewElement);
+					gestureDetector = new GestureDetector(gestureListener);
+					this.GenericMotion += HandleGenericMotion;
+					this.Touch += HandleTouch;
+				}
 			}
 		}
 		void HandleTouch (object sender, TouchEventArgs e)

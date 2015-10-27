@@ -3,7 +3,32 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestureRecognizers.Droid", "..\Projects\GestureRecognizers.Droid\GestureRecognizers.Droid.csproj", "{17E6E807-5EA0-4ACF-A661-E1576BD5633A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestureRecognizers.PCL", "..\Projects\GestureRecognizers.PCL\GestureRecognizers.PCL.csproj", "{D1CF400D-25B1-4A4A-89AE-AA88301E7753}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestureRecognizerTests", "..\Tests\GestureRecognizerTests\GestureRecognizerTests.csproj", "{746D5EAD-5F15-46BA-98A8-56AAE760FEDF}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17E6E807-5EA0-4ACF-A661-E1576BD5633A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17E6E807-5EA0-4ACF-A661-E1576BD5633A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17E6E807-5EA0-4ACF-A661-E1576BD5633A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{17E6E807-5EA0-4ACF-A661-E1576BD5633A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17E6E807-5EA0-4ACF-A661-E1576BD5633A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1CF400D-25B1-4A4A-89AE-AA88301E7753}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1CF400D-25B1-4A4A-89AE-AA88301E7753}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1CF400D-25B1-4A4A-89AE-AA88301E7753}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1CF400D-25B1-4A4A-89AE-AA88301E7753}.Release|Any CPU.Build.0 = Release|Any CPU
+		{746D5EAD-5F15-46BA-98A8-56AAE760FEDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{746D5EAD-5F15-46BA-98A8-56AAE760FEDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{746D5EAD-5F15-46BA-98A8-56AAE760FEDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{746D5EAD-5F15-46BA-98A8-56AAE760FEDF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

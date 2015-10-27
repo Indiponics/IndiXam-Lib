@@ -21,16 +21,7 @@ namespace IndiXam.Forms.Controls.GestureRecognizerTests
 		{
 			testActivated <baseClassFake>();
 		}
-		[Test()]
-		public void IndiDownGestureRecognizerTestActivate()
-		{
-			testActivated<IndiXam.Forms.Controls.GestureRecognizers.IndiDownGestureRecognizer>();
-		}
-		[Test()]
-		public void IndiDoubleTapEventGestureRecognizerTestActivate()
-		{
-			testActivated<IndiXam.Forms.Controls.GestureRecognizers.IndiDoubleTapEventGestureRecognizer>();
-		}
+
 		[Test()]
 		public void IndiFlingGestureRecognizerTestActivate()
 		{
@@ -46,18 +37,6 @@ namespace IndiXam.Forms.Controls.GestureRecognizerTests
 		{
 			testActivated<IndiXam.Forms.Controls.GestureRecognizers.IndiScrollGestureRecognizer>();
 		}
-		[Test()]
-		public void IndiShowPressGestureRecognizerTestActivate()
-		{
-			testActivated<IndiXam.Forms.Controls.GestureRecognizers.IndiShowPressGestureRecognizer>();
-		}
-		[Test()]
-		public void IndiSingleTapUpGestureRecognizerTestActivate()
-		{
-			testActivated<IndiXam.Forms.Controls.GestureRecognizers.IndiSingleTapUpGestureRecognizer>();
-		}
-
-
 		[Test()]
 		public void TestNullActivate()
 		{
@@ -81,16 +60,6 @@ namespace IndiXam.Forms.Controls.GestureRecognizerTests
 		}
 
 		[Test()]
-		public void IndiDownGestureRecognizerTestLocation()
-		{
-			testLocation<IndiXam.Forms.Controls.GestureRecognizers.IndiDownGestureRecognizer>();
-		}
-		[Test()]
-		public void IndiDoubleTapEventGestureRecognizerTestLocation()
-		{
-			testLocation<IndiXam.Forms.Controls.GestureRecognizers.IndiDoubleTapEventGestureRecognizer>();
-		}
-		[Test()]
 		public void IndiFlingGestureRecognizerTestLocation()
 		{
 			testLocation<IndiXam.Forms.Controls.GestureRecognizers.IndiFlingGestureRecognizer>();
@@ -105,35 +74,12 @@ namespace IndiXam.Forms.Controls.GestureRecognizerTests
 		{
 			testLocation<IndiXam.Forms.Controls.GestureRecognizers.IndiScrollGestureRecognizer>();
 		}
-		[Test()]
-		public void IndiShowPressGestureRecognizerTestLocation()
-		{
-			testLocation<IndiXam.Forms.Controls.GestureRecognizers.IndiShowPressGestureRecognizer>();
-		}
-		[Test()]
-		public void IndiSingleTapUpGestureRecognizerTestLocation()
-		{
-			testLocation<IndiXam.Forms.Controls.GestureRecognizers.IndiSingleTapUpGestureRecognizer>();
-		}
 		private void testLocation<T>() where T : IndiGestureRecognizerBase, new()
 		{
 			var dc = new T();
 			dc.Location = new Point(1, 2);
 			Assert.AreEqual(1,dc.Location.X);
 			Assert.AreEqual(2, dc.Location.Y);
-		}
-
-
-
-		[Test()]
-		public void IndiDownGestureRecognizerTestPropertyChanged()
-		{
-			testPropertyChanged<IndiXam.Forms.Controls.GestureRecognizers.IndiDownGestureRecognizer>();
-		}
-		[Test()]
-		public void IndiDoubleTapEventGestureRecognizerTestPropertyChanged()
-		{
-			testPropertyChanged<IndiXam.Forms.Controls.GestureRecognizers.IndiDoubleTapEventGestureRecognizer>();
 		}
 		[Test()]
 		public void IndiFlingGestureRecognizerTestPropertyChanged()
@@ -150,17 +96,6 @@ namespace IndiXam.Forms.Controls.GestureRecognizerTests
 		{
 			testPropertyChanged<IndiXam.Forms.Controls.GestureRecognizers.IndiScrollGestureRecognizer>();
 		}
-		[Test()]
-		public void IndiShowPressGestureRecognizerTestPropertyChanged()
-		{
-			testPropertyChanged<IndiXam.Forms.Controls.GestureRecognizers.IndiShowPressGestureRecognizer>();
-		}
-		[Test()]
-		public void IndiSingleTapUpGestureRecognizerTestPropertyChanged()
-		{
-			testPropertyChanged<IndiXam.Forms.Controls.GestureRecognizers.IndiSingleTapUpGestureRecognizer>();
-		}
-
 		string propertyName;
 		private void testPropertyChanged<T>() where T : IndiGestureRecognizerBase, new()
 		{

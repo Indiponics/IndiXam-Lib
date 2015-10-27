@@ -44,8 +44,8 @@ namespace IndiXam.Forms.Controls.GestureRecognizers
         }
 
         /// <summary>
-        /// Raises the double tap event. Bacause windows phone fires both a tap and double tap event 
-        /// ondoubletap this functionality was emulated here for consistency.
+        /// Raises the double tap event. Because windows phone fires both a tap and double tap event 
+        /// OnDoubleTap this functionality was emulated here for consistency.
         /// </summary>
         /// <param name="e">Source of Gesture.</param>
         /// <returns>result of activation</returns>  

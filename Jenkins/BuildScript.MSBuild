@@ -46,7 +46,7 @@
 		<!-- Write number of violation founds in last build -->
 		<WriteLinesToFile File="violationCount.txt" Lines="$(StyleCopViolationCount)" Overwrite="true" />
 	</Target>
-	<Target Name="Build" DependsOnTargets="NuGet">
+	<Target Name="Build" DependsOnTargets="NuGet;StyleCop">
 		<Exec Command="@Echo *************************Build**************************"/>
 		<MSBuild Projects="%(ProjectsToProcess.Identity)" 
 				Properties="

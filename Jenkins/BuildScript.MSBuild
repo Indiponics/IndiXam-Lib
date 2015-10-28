@@ -1,0 +1,71 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
+    <BuildInParallel>true</BuildInParallel>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectsToProcess Include="..\Projects\GestureRecognizers.PCL\GestureRecognizers.PCL.csproj"/>
+    <ProjectsToProcess Include="..\**\*.csproj" Exclude="@(ProjectsToProcess)"/>
+    <BuildNumberFile Include="..\nextBuildNumber" />
+  </ItemGroup>
+  <Target Name="NuGet">
+	<Message Text="NuGet"/>
+    <Exec Command="nuget restore &quot;%(ProjectsToProcess.RelativeDir)packages.config&quot; -PackagesDirectory &quot;..\Solutions\packages&quot;"/>
+    <Exec Command="nuget update  &quot;%(ProjectsToProcess.RelativeDir)packages.config&quot; -repositoryPath &quot;..\Solutions\packages&quot;"/>
+  </Target>
+	<UsingTask TaskName="StyleCopTask" AssemblyFile="$(MSBuildExtensionsPath)\..\StyleCop 4.7\StyleCop.dll" />
+	<PropertyGroup>
+		<!-- Set a default value of 1000000 as maximum Stylecop violations found -->
+		<StyleCopMaxViolationCount>1000000</StyleCopMaxViolationCount>
+	</PropertyGroup>
+	<Target Name="StyleCop">
+		<Message Text="StyleCop"/>
+		<!-- Get last violation count from file if exists -->
+		<ReadLinesFromFile Condition="Exists('violationCount.txt')" File="violationCount.txt">
+			<Output TaskParameter="Lines" PropertyName="StyleCopMaxViolationCount" />
+		</ReadLinesFromFile>
+		
+		<!-- Create a collection of files to scan -->
+		<CreateItem Include="..\**\*.cs">
+			<Output TaskParameter="Include" ItemName="StyleCopFiles" />
+		</CreateItem>
+		
+		<!-- Launch Stylecop task itself -->
+		<StyleCopTask ProjectFullPath="$(MSBuildProjectFile)" 
+		SourceFiles="@(StyleCopFiles)" 
+		ForceFullAnalysis="true" 
+		TreatErrorsAsWarnings="true" 
+		OutputFile="StyleCopReport.xml" 
+		CacheResults="true" 
+		OverrideSettingsFile= "StylecopCustomRule\Settings.Stylecop" 
+		MaxViolationCount="$(StyleCopMaxViolationCount)">
+		
+			<!-- Set the returned number of violation -->
+			<Output TaskParameter="ViolationCount" PropertyName="StyleCopViolationCount" />
+		</StyleCopTask>
+		<!-- Write number of violation founds in last build -->
+		<WriteLinesToFile File="violationCount.txt" Lines="$(StyleCopViolationCount)" Overwrite="true" />
+	</Target>
+	<Target Name="Build" DependsOnTargets="NuGet;StyleCop">
+		<Exec Command="@Echo *************************Build**************************"/>
+		<MSBuild Projects="%(ProjectsToProcess.Identity)" 
+				Properties="
+					DefineConstants=$(DefineConstants);
+					BuildInParallel=$(BuildInParallel);
+				 "/>
+		<Exec Command="nuget pack &quot;%(ProjectsToProcess.Identity)&quot;"/>
+	</Target>
+	<Target Name="Publish" DependsOnTargets="Build">
+		<ReadLinesFromFile File="@(BuildNumberFile)">
+			<Output TaskParameter="Lines" PropertyName="BuildNumber" />
+		</ReadLinesFromFile>
+		
+		<CreateItem Include="*.nupkg">
+			<Output TaskParameter="Include" ItemName="NugetPackages" />
+		</CreateItem>	
+		<Exec Command="@nuget push %(NugetPackages.Identity) -source https://www.myget.org/F/indiponics/api/v2/package"/>
+	</Target>
+	<Target Name="BeforeBuild">
+		<Message Text="BeforeBuild"/>
+	</Target>
+</Project>

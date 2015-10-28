@@ -1,0 +1,117 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#var controls = new List<string>#>
+<#{#>
+<#"Image",#>
+<#"TableView",#>
+<#"ActivityIndicator",#>
+<#"DatePicker",#>
+<#"Editor",#>
+<#"Entry",#>
+<#"ProgressBar",#>
+<#"SearchBar",#>
+<#"Slider",#>
+<#"Stepper",#>
+<#"Switch",#>
+<#"BoxView",#>
+<#"Picker",#>
+<#"TimePicker",#>
+<#"WebView",#>
+<#"Label"#>
+<#};#>
+// <copyright file="ControlRendererT4Template1.cs" company="David Strickland">
+//     Copyright (c) David Strickland. The MIT License (MIT)
+// </copyright>
+
+using GestureRecognizers.Droid.Renderers;
+using IndiXam.Forms.Controls.GestureRecognizers;
+using Xamarin.Forms;
+[module: System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1649:FileHeaderFileNameDocumentationMustMatchTypeName", Justification = "Reviewed.")]
+[module: System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Reviewed.")]
+
+<#			using(IEnumerator<string> enumerator = controls.GetEnumerator()) {#>
+<#				while(enumerator.MoveNext())#>
+<#				{#>
+[assembly: ExportRenderer(typeof(<#=enumerator.Current#>), typeof(Indi<#=enumerator.Current#>Renderer))]
+<#				}#>
+<#			}#>
+
+namespace IndiXam.Forms.Controls.GestureRecognizers
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Android.Views;
+    using Xamarin.Forms;
+    using Xamarin.Forms.Platform.Android;
+<#			using(IEnumerator<string> enumerator = controls.GetEnumerator()) {#>
+<#				while(enumerator.MoveNext())#>
+<#				{#>
+
+    /// <summary>
+    /// Wires up Gestures to the <#=enumerator.Current#> Control
+    /// </summary>
+    public class Indi<#=enumerator.Current#>Renderer : <#=enumerator.Current#>Renderer
+    {
+        /// <summary>
+        /// Gesture translates the events identified by the listener
+        /// </summary>
+        private GestureDetector gestureDetector;
+
+        /// <summary>
+        /// Contains the event handlers used by the platform control to notify the  VM of the events that are occurring.
+        /// </summary>
+        private IndiGestureListener gestureListener;
+
+        /// <summary>
+        /// Method called when the underlying ViewElement Changes.
+        /// </summary>
+        /// <param name="e">Passes information about the element that changed.</param>
+        protected override void OnElementChanged(ElementChangedEventArgs<<#=enumerator.Current#>> e)
+        {
+            base.OnElementChanged(e);
+            if (GestureActuator.ControlsToActuate
+            .Contains<GestureActuator.ControlToActuate>(GestureActuator.ControlToActuate.<#=enumerator.Current#>))
+            {
+                if (e.NewElement == null) 
+                {
+                    this.GenericMotion -= this.HandleGenericMotion;
+                    this.Touch -= this.HandleTouch;
+                }
+
+                if (e.OldElement == null && e.NewElement != null) 
+                {
+                    this.gestureListener = new IndiGestureListener((<#=enumerator.Current#>)e.NewElement);
+                    this.gestureDetector = new GestureDetector(this.gestureListener);
+                    this.GenericMotion += this.HandleGenericMotion;
+                    this.Touch += this.HandleTouch;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Handles the Touch Events that occur.
+        /// </summary>
+        /// <param name="sender">The object that raised the event</param>
+        /// <param name="e">Information about the Touch event</param>
+        private void HandleTouch(object sender, TouchEventArgs e)
+        {
+            this.gestureDetector.OnTouchEvent(e.Event);
+        }
+
+        /// <summary>
+        /// Handles the Generic Motion Events that occur.
+        /// </summary>
+        /// <param name="sender">The object that raised the event</param>
+        /// <param name="e">Information about the Touch event</param>
+        private void HandleGenericMotion(object sender, GenericMotionEventArgs e)
+        {
+            this.gestureDetector.OnTouchEvent(e.Event);
+        }
+    }
+<#				}#>
+<#			}#>
+}

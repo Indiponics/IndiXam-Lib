@@ -10,8 +10,8 @@ namespace IndiXam.Forms.Controls.GestureRecognizers
     using System.Reflection;
     using Android.Runtime;
     using Android.Views;
-    using Xamarin.Forms;
     using IndiXam.Forms.Controls.GestureRecognizers;
+    using Xamarin.Forms;
     using Xamarin.Forms.Platform.Android;
 
     /// <summary>
@@ -25,9 +25,10 @@ namespace IndiXam.Forms.Controls.GestureRecognizers
         private Xamarin.Forms.View target;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Renderers.IndiGestureListener"/> class.
+        /// Initializes a new instance of the
+        /// <see cref="IndiXam.Forms.Controls.GestureRecognizers.IndiGestureListener"/> class.
         /// </summary>
-        /// <param name="control">Source of Gesture</param>
+        /// <param name="control">Control that will raise the events from gestures performed on it.</param>
         public IndiGestureListener(Xamarin.Forms.View control)
         {
             this.target = control;
@@ -43,43 +44,14 @@ namespace IndiXam.Forms.Controls.GestureRecognizers
         }
 
         /// <summary>
-        /// Raises the double tap event.
+        /// Raises the double tap event. Because windows phone fires both a tap and double tap event 
+        /// OnDoubleTap this functionality was emulated here for consistency.
         /// </summary>
         /// <param name="e">Source of Gesture.</param>
         /// <returns>result of activation</returns>  
         public override bool OnDoubleTap(MotionEvent e)
         {
-            return this.OnTap(2);
-        }
-
-        /// <summary>
-        /// This first once for each tap in a double tap. 
-        /// </summary>
-        /// <param name="e">Source of Gesture.</param>
-        /// <returns>result of activation</returns>  
-        public override bool OnDoubleTapEvent(MotionEvent e)
-        {
-            return this.SendActivated<IndiDoubleTapEventGestureRecognizer>(e);
-        }
-
-        /// <summary>
-        /// Raises the single tap up event.
-        /// </summary>
-        /// <param name="e">Source of Gesture.</param>
-        /// <returns>result of activation</returns>  
-        public override bool OnSingleTapUp(MotionEvent e)
-        {
-            return this.SendActivated<IndiSingleTapUpGestureRecognizer>(e);
-        }
-
-        /// <summary>
-        /// Raises the down event.
-        /// </summary>
-        /// <param name="e">Source of Gesture.</param>
-        /// <returns>result of activation</returns>  
-        public override bool OnDown(MotionEvent e)
-        {
-            return this.SendActivated<IndiDownGestureRecognizer>(e);
+            return this.OnTap(1) && this.OnTap(2);
         }
 
         /// <summary>
@@ -150,15 +122,6 @@ namespace IndiXam.Forms.Controls.GestureRecognizers
             }
 
             return result;
-        }
-
-        /// <summary>
-        /// Raises the show press event.
-        /// </summary>
-        /// <param name="e">Source of Gesture..</param>
-        public override void OnShowPress(MotionEvent e)
-        {
-            this.SendActivated<IndiShowPressGestureRecognizer>(e);
         }
 
         /// <summary>

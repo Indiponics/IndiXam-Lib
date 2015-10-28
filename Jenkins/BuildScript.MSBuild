@@ -6,12 +6,12 @@
   <ItemGroup>
     <ProjectsToProcess Include="..\Projects\GestureRecognizers.PCL\GestureRecognizers.PCL.csproj"/>
     <ProjectsToProcess Include="..\**\*.csproj" Exclude="@(ProjectsToProcess)"/>
-    <ApiFile Include="..\..\MyGetAPIKey" />
+    <BuildNumberFile Include="..\nextBuildNumber" />
   </ItemGroup>
   <Target Name="NuGet">
-		<Exec Command="@Echo *************************Nuget**************************"/>
-    <Exec Command="nuget restore &quot;%(ProjectsToProcess.RelativeDir)packages.config&quot; -PackagesDirectory &quot;%(ProjectsToProcess.RelativeDir)..\..\Solutions\packages&quot;"/>
-    <!--<Exec Command="nuget update  &quot;%(ProjectsToProcess.RelativeDir)packages.config&quot; -repositoryPath &quot;%(ProjectsToProcess.RelativeDir)..\..\Solutions\packages&quot;"/>-->
+	<Message Text="NuGet"/>
+    <Exec Command="nuget restore &quot;%(ProjectsToProcess.RelativeDir)packages.config&quot; -PackagesDirectory &quot;..\Solutions\packages&quot;"/>
+    <Exec Command="nuget update  &quot;%(ProjectsToProcess.RelativeDir)packages.config&quot; -repositoryPath &quot;..\Solutions\packages&quot;"/>
   </Target>
 	<UsingTask TaskName="StyleCopTask" AssemblyFile="$(MSBuildExtensionsPath)\..\StyleCop 4.7\StyleCop.dll" />
 	<PropertyGroup>
@@ -19,7 +19,7 @@
 		<StyleCopMaxViolationCount>1000000</StyleCopMaxViolationCount>
 	</PropertyGroup>
 	<Target Name="StyleCop">
-		<Exec Command="@Echo *************************Style Cop**************************"/>
+		<Message Text="StyleCop"/>
 		<!-- Get last violation count from file if exists -->
 		<ReadLinesFromFile Condition="Exists('violationCount.txt')" File="violationCount.txt">
 			<Output TaskParameter="Lines" PropertyName="StyleCopMaxViolationCount" />
@@ -46,7 +46,7 @@
 		<!-- Write number of violation founds in last build -->
 		<WriteLinesToFile File="violationCount.txt" Lines="$(StyleCopViolationCount)" Overwrite="true" />
 	</Target>
-	<Target Name="Build" DependsOnTargets="NuGet">
+	<Target Name="Build" DependsOnTargets="NuGet;StyleCop">
 		<Exec Command="@Echo *************************Build**************************"/>
 		<MSBuild Projects="%(ProjectsToProcess.Identity)" 
 				Properties="
@@ -54,21 +54,18 @@
 					BuildInParallel=$(BuildInParallel);
 				 "/>
 		<Exec Command="nuget pack &quot;%(ProjectsToProcess.Identity)&quot;"/>
-		<Exec Command="@Echo *************************After Build**************************"/>
+	</Target>
+	<Target Name="Publish" DependsOnTargets="Build">
+		<ReadLinesFromFile File="@(BuildNumberFile)">
+			<Output TaskParameter="Lines" PropertyName="BuildNumber" />
+		</ReadLinesFromFile>
 		
-		<ReadLinesFromFile File="@(ApiFile)">
-			<Output TaskParameter="Lines" PropertyName="ApiKey" />
-		</ReadLinesFromFile>
-
-		<ReadLinesFromFile File="@(ApiFile)">
-			<Output TaskParameter="Lines" PropertyName="ApiKey" />
-		</ReadLinesFromFile>
 		<CreateItem Include="*.nupkg">
 			<Output TaskParameter="Include" ItemName="NugetPackages" />
 		</CreateItem>	
-		<Exec Command="@nuget push %(NugetPackages.Identity) $(ApiKey) -source https://www.myget.org/F/indiponics/api/v2/package"/>
+		<Exec Command="@nuget push %(NugetPackages.Identity) -source https://www.myget.org/F/indiponics/api/v2/package"/>
 	</Target>
 	<Target Name="BeforeBuild">
-		<Exec Command="@Echo *************************Before Build**************************"/>
+		<Message Text="BeforeBuild"/>
 	</Target>
 </Project>

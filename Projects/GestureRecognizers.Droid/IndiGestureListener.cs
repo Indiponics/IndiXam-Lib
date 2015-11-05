@@ -141,7 +141,7 @@ namespace IndiXam.Forms.Controls.GestureRecognizers
         /// <param name="e">Source of Gesture..</param>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
         /// <returns>result of activation</returns>  
-        private bool SendActivated<T>(MotionEvent e) where T : IIndiGestureRecognizer
+        private bool SendActivated<T>(MotionEvent e) where T : IndiXam.Forms.Controls.GestureRecognizers.IIndiGestureRecognizer
         {
             if (this.target == null || this.target.GestureRecognizers == null 
                 || this.target.GestureRecognizers.Count == 0)

@@ -53,12 +53,14 @@
 					DefineConstants=$(DefineConstants);
 					BuildInParallel=$(BuildInParallel);
 				 "/>
-		<Exec Command="nuget pack &quot;%(ProjectsToProcess.Identity)&quot;"/>
+
 	</Target>
 	<Target Name="Publish" DependsOnTargets="Build">
 		<ReadLinesFromFile File="@(BuildNumberFile)">
 			<Output TaskParameter="Lines" PropertyName="BuildNumber" />
 		</ReadLinesFromFile>
+
+		<Exec Command="nuget pack &quot;%(ProjectsToProcess.Identity)&quot; -Version=$(BuildNumber)-Prerelease"/>
 		
 		<CreateItem Include="*.nupkg">
 			<Output TaskParameter="Include" ItemName="NugetPackages" />

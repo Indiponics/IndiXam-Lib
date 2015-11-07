@@ -10,8 +10,8 @@
   </ItemGroup>
   <Target Name="NuGet">
 	<Message Text="NuGet"/>
-    <Exec Command="nuget restore &quot;%(ProjectsToProcess.RelativeDir)packages.config&quot; -PackagesDirectory &quot;..\Solutions\packages&quot;"/>
-    <Exec Command="nuget update  &quot;%(ProjectsToProcess.RelativeDir)packages.config&quot; -repositoryPath &quot;..\Solutions\packages&quot;"/>
+    <Exec Command="nuget restore &quot;%(ProjectsToProcess.RelativeDir)packages.config&quot; -PackagesDirectory &quot;packages&quot;"/>
+    <Exec Command="nuget update  &quot;%(ProjectsToProcess.RelativeDir)packages.config&quot; -repositoryPath &quot;packages&quot;"/>
   </Target>
 	<UsingTask TaskName="StyleCopTask" AssemblyFile="$(MSBuildExtensionsPath)\..\StyleCop 4.7\StyleCop.dll" />
 	<PropertyGroup>

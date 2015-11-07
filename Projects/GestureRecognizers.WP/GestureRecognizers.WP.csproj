@@ -98,7 +98,9 @@
     <Compile Include="Renderers\IndiImageRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Renderers\ControlRendererT4Template.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ControlRendererT4Template.cs</LastGenOutput>
